@@ -8,7 +8,7 @@ pipeline {
 */
     environment {
         registry = "shifanasreen/vproadddock"
-        registryCredential = "dockerhub'
+        registryCredential = 'dockerhub'
     }
 
     stages{
