@@ -1,6 +1,6 @@
 pipeline {
 
-    agent any
+        agent any
 /*
 	tools {
         maven "maven3"
@@ -81,9 +81,9 @@ pipeline {
 
         stage('Upload Image') {
             steps {
-             docker.withRegistry('',registryCredential)
-             dockerImage.push("V$BUILD_NUMBER")
-             dockerImage.push('latest')
+                docker.withRegistry('',registryCredential)
+                dockerImage.push("V$BUILD_NUMBER")
+                dockerImage.push('latest')
             }
         }
 
