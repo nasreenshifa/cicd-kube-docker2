@@ -81,11 +81,12 @@ pipeline {
 
         stage('Upload Image') {
             steps {
+              script{
                 docker.withRegistry('',registryCredential) {
-                  dockerImage.push("V$BUILD_NUMBER")
-                  dockerImage.push('latest')
+                    dockerImage.push("V$BUILD_NUMBER")
+                    dockerImage.push('latest')
                 }
-
+              }
             }
         }
 
@@ -97,7 +98,7 @@ pipeline {
 
         stage('Kubernetes Deploy') {
           agent {label 'KOPS'}
-            steps{
+            steps {
                sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
             }
         }
