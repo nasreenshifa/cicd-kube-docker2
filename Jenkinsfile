@@ -25,12 +25,6 @@ pipeline {
             }
         }
 
-        stage('UNIT TEST'){
-            steps {
-                sh 'mvn test -DskipTests'
-            }
-        }
-
         stage('INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
